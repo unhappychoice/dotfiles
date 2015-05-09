@@ -14,6 +14,16 @@ compinit -u
 alias ls="ls -G"
 alias ll="ls -lG"
 alias la="ls -laG"
+
+alias g='git'
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gco='git checkout'
+alias gd='git diff'
+alias gp='git push'
+alias gs='git status'
+
 alias fuck='$(thefuck $(fc -ln -1))'
 
 # homeshick
