@@ -2,8 +2,8 @@
 source $HOME/.zsh/zsh-git-prompt/zshrc.sh
 
 # prompt
-PROMPT="${fg[cyan]}%n${fg[green]} [%m] ${reset_color}%# "
-RPROMPT='$(git_super_status) %~'
+PROMPT="${fg[cyan]}%n${fg[green]} [%m] ${reset_color} %~ $(git_super_status) 
+%# "
 
 # completion
 fpath=(/usr/local/share/zsh-completions $fpath)	
