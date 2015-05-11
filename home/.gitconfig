@@ -3,3 +3,5 @@
 	email = unhappychoice@gmail.com
 [push]
 	default = simple
+[core]
+	excludesfile = /Users/uekiyuuji/.gitignore
