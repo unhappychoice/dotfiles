@@ -1,3 +1,6 @@
+# path
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
 # source
 source $HOME/.zsh/zsh-git-prompt/zshrc.sh
 

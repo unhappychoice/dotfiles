@@ -4,4 +4,9 @@
 [push]
 	default = simple
 [core]
-	excludesfile = /Users/uekiyuuji/.gitignore
+	excludesfile = ~/.gitignore
+	editor = nano
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
