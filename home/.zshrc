@@ -5,7 +5,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 source $HOME/.zsh/zsh-git-prompt/zshrc.sh
 
 # prompt
-PROMPT="${fg[cyan]}%n${fg[green]} [%m] ${reset_color} %~ $(git_super_status) 
+PROMPT="${fg[cyan]}%n${fg[green]} [%m] ${reset_color} %~ \$(git-radar --zsh) 
 %# "
 
 # completion

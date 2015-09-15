@@ -146,6 +146,7 @@
                "#"
                (lambda (arg) (ruby-end-of-block)) nil))
 (global-set-key "\C-c\C-d" 'xmp)
+(defun ruby-mode-set-encoding () nil)
 
 ;;auto-complete-mode
 (require 'auto-complete-config)
