@@ -40,3 +40,28 @@ eval "$(rbenv init -)"
 
 # direnv
 eval "$(direnv hook zsh)"
+
+# peco
+function pssh() {
+  ssh $(awk '
+    tolower($1)=="host" {
+      for (i=2; i<=NF; i++) {
+        if ($i !~ "[*?]") {
+          print $i
+        }
+      }
+    }
+  ' ~/.ssh/config | sort | peco)
+}
+
+# z
+source ~/.zsh/z/z.sh
+
+function pcd() {
+  local res=$(z | sort -rn | cut -c 12- | peco)
+  if [ -n "$res" ]; then
+    cd "$res"
+  else
+    return 1
+  fi
+}
