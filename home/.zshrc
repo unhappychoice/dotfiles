@@ -3,6 +3,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # source
 source $HOME/.zsh/zsh-git-prompt/zshrc.sh
+source $HOME/.zsh/resty/resty
 
 # prompt
 PROMPT="${fg[cyan]}%n${fg[green]} [%m] ${reset_color} %~ \$(git-radar --zsh) 
