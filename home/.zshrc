@@ -1,9 +1,10 @@
 # path
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export CIRCLE_CI_TOKEN=239f1953a9c0a841f945c89bb3dd15bf8f745ccb
 
 # source
 source $HOME/.zsh/zsh-git-prompt/zshrc.sh
-source $HOME/.zsh/resty/resty
+# source $HOME/.zsh/resty/resty
 
 # prompt
 PROMPT="${fg[cyan]}%n${fg[green]} [%m] ${reset_color} %~ \$(git-radar --zsh) 
@@ -23,7 +24,6 @@ alias g='git'
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'
-alias gco='git checkout'
 alias gd='git diff'
 alias gp='git push'
 alias gs='git status'
@@ -66,3 +66,38 @@ function pcd() {
     return 1
   fi
 }
+
+function gcd() {
+  local res=$(ghq list | sort | peco)
+  if [ -n "$res" ]; then
+    ghq look "$res"
+  else
+    return 1
+  fi
+}
+
+function gco() {
+  local res=$(git branch -a | cut -c 3- | sort | peco)
+  if [ -n "$res" ]; then
+    git checkout "$res"
+  else
+    return 1
+  fi
+}
+
+function gbr() {
+  local res=$(ghq list | sort | peco)
+  if [ -n "$res" ]; then
+    open "https://$res"
+  else
+    return 1
+  fi
+}
+
+function pgrep() {
+  ack "$@" . | peco --initial-filter CaseSensitive --exec 'awk -F : '"'"'{print "+" $2 " " $1}'"'"' | xargs less '
+}
+
+# gpg-agent
+export "$(gpg-agent -s --enable-ssh-support --daemon --write-env-file $HOME/.gpg-agent-info)"
+export GPG_TTY=$(tty)
