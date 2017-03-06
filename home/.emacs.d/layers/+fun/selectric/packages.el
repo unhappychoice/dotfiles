@@ -1,0 +1,1 @@
+/Users/yuji/.homesick/repos/dotfiles/home/.emacs.d/layers/+fun/selectric/packages.el

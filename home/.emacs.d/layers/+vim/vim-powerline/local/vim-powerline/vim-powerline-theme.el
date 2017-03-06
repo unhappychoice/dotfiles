@@ -1,0 +1,1 @@
+/Users/yuji/.homesick/repos/dotfiles/home/.emacs.d/layers/+vim/vim-powerline/local/vim-powerline/vim-powerline-theme.el

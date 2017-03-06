@@ -1,0 +1,1 @@
+/Users/yuji/.homesick/repos/dotfiles/home/.emacs.d/tests/core/core-release-management-ftest.el

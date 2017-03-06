@@ -1,0 +1,1 @@
+/Users/yuji/.homesick/repos/dotfiles/home/.emacs.d/layers/+spacemacs/spacemacs-evil/local/evil-unimpaired/evil-unimpaired.el

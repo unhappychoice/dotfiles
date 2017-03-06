@@ -1,0 +1,1 @@
+/Users/yuji/.homesick/repos/dotfiles/home/.emacs.d/layers/+lang/go/local/go-rename/go-rename.el
