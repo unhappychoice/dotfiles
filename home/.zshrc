@@ -44,15 +44,12 @@ eval "$(direnv hook zsh)"
 
 # peco
 function pssh() {
-  ssh $(awk '
-    tolower($1)=="host" {
-      for (i=2; i<=NF; i++) {
-        if ($i !~ "[*?]") {
-          print $i
-        }
-      }
-    }
-  ' ~/.ssh/config | sort | peco)
+  local res=$(z | aws ec2 describe-instances | jq -r '.Reservations[] | .Instances[] | select(.State.Name == "running") | [(.Tags[] | select(.Key == "Name") | .Value // ""), .PublicIpAddress] | join("\t")' | sort | peco)
+  if [ -n "$res" ]; then
+    ssh ec2-user@"$(echo "$res" | cut -f2)" -i ~/.ssh/id_comuque_gateway
+  else
+    return 1
+  fi
 }
 
 # z
@@ -77,7 +74,7 @@ function gcd() {
 }
 
 function gco() {
-  local res=$(git branch -a | cut -c 3- | sort | peco)
+  local res=$(git branch -a | cut -c 3- | sed -e "s/remotes\/origin\///g" | sort | peco)
   if [ -n "$res" ]; then
     git checkout "$res"
   else
