@@ -1,5 +1,5 @@
 [user]
-	name = unhappychoice
+	name = Yuji Ueki
 	email = unhappychoice@gmail.com
 [push]
 	default = simple
@@ -10,3 +10,10 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[github]
+	user = unhappychoice
+[ghi]
+	token = !security find-internet-password -a unhappychoice -s github.com -l 'ghi token' -w
+[commit]
+	gpgsign = true
+	template = /Users/yuji/.commit_template

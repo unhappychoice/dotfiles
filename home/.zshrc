@@ -1,6 +1,5 @@
 # path
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-export CIRCLE_CI_TOKEN=239f1953a9c0a841f945c89bb3dd15bf8f745ccb
 
 # source
 source $HOME/.zsh/zsh-git-prompt/zshrc.sh
