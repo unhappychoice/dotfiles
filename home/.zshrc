@@ -41,7 +41,14 @@ eval "$(rbenv init -)"
 # direnv
 eval "$(direnv hook zsh)"
 
-# peco
+# z
+source ~/.zsh/z/z.sh
+
+# gpg-agent
+export "$(gpg-agent -s --enable-ssh-support --daemon --write-env-file $HOME/.gpg-agent-info)"
+export GPG_TTY=$(tty)
+
+# peco functions
 function pssh() {
   local res=$(z | aws ec2 describe-instances | jq -r '.Reservations[] | .Instances[] | select(.State.Name == "running") | [(.Tags[] | select(.Key == "Name") | .Value // ""), .PublicIpAddress] | join("\t")' | sort | peco)
   if [ -n "$res" ]; then
@@ -50,9 +57,6 @@ function pssh() {
     return 1
   fi
 }
-
-# z
-source ~/.zsh/z/z.sh
 
 function pcd() {
   local res=$(z | sort -rn | cut -c 12- | peco)
@@ -93,7 +97,3 @@ function gbr() {
 function pgrep() {
   ack "$@" . | peco --initial-filter CaseSensitive --exec 'awk -F : '"'"'{print "+" $2 " " $1}'"'"' | xargs less '
 }
-
-# gpg-agent
-export "$(gpg-agent -s --enable-ssh-support --daemon --write-env-file $HOME/.gpg-agent-info)"
-export GPG_TTY=$(tty)
