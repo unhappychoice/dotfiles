@@ -77,7 +77,7 @@ function gcd() {
 }
 
 function gco() {
-  local res=$(git branch -a | cut -c 3- | sed -e "s/remotes\/origin\///g" | sort | peco)
+  local res=$(git branch -a | cut -c 3- | sed "/remotes\/origin\/HEAD -> origin\/master/d" | sed -e "s/remotes\/origin\///g" | sort | uniq |peco)
   if [ -n "$res" ]; then
     git checkout "$res"
   else
