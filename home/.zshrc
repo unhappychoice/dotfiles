@@ -45,7 +45,8 @@ eval "$(direnv hook zsh)"
 source ~/.zsh/z/z.sh
 
 # gpg-agent
-export "$(gpg-agent -s --enable-ssh-support --daemon --write-env-file $HOME/.gpg-agent-info)"
+gpgconf --kill gpg-agent
+export "$(gpg-agent -s --enable-ssh-support --daemon)"
 export GPG_TTY=$(tty)
 
 # peco functions

@@ -17,3 +17,5 @@
 [commit]
 	gpgsign = true
 	template = /Users/yuji/.commit_template
+[tag]
+	gpgsign = true
