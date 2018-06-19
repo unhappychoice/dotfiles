@@ -7,7 +7,7 @@ source $HOME/.zsh/zsh-git-prompt/zshrc.sh
 # source $HOME/.zsh/resty/resty
 
 # prompt
-PROMPT="${fg[cyan]}%n${fg[green]} [%m] ${reset_color} %~ \$(git-radar --zsh) 
+PROMPT="${fg[cyan]}%n${fg[green]} [%m]${reset_color} %~ \$(git-radar --zsh)
 %# "
 
 # completion
@@ -29,6 +29,9 @@ alias gp='git push'
 alias gs='git status'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias gla="git log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+alias gp="git branch --merged master | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %"
+alias gps="git branch --merged staging | grep -vE '^\*|master$|develop$|staging$' | xargs -I % git branch -d %"
+alias gpd="git branch --merged develop | grep -vE '^\*|master$|develop$|staging$' | xargs -I % git branch -d %"
 
 alias fuck='$(thefuck $(fc -ln -1))'
 
@@ -52,11 +55,10 @@ export GPG_TTY=$(tty)
 
 # peco functions
 function pssh() {
-  local res=$(z | aws ec2 describe-instances | jq -r '.Reservations[] | .Instances[] | select(.State.Name == "running") | [(.Tags[] | select(.Key == "Name") | .Value // ""), .PublicIpAddress] | join("\t")' | sort | peco)
-  if [ -n "$res" ]; then
-    ssh ec2-user@"$(echo "$res" | cut -f2)" -i ~/.ssh/id_comuque_gateway
-  else
-    return 1
+  local host=$(grep -r 'Host ' $HOME/.ssh/* | cut -d' ' -f2 | sort | peco)
+
+  if [ ! -z "$host" ]; then
+    ssh "$host"
   fi
 }
 
@@ -79,7 +81,7 @@ function gcd() {
 }
 
 function gco() {
-  local res=$(git branch -a | cut -c 3- | sed "/remotes\/origin\/HEAD -> origin\/master/d" | sed -e "s/remotes\/origin\///g" | sort | uniq |peco)
+  local res=$(git branch -a | cut -c 3- | sed "/remotes\/origin\/HEAD -> origin\/master/d" | sed "/remotes\/origin\/HEAD -> origin\/staging/d" | sed -e "s/remotes\/origin\///g" | sort | uniq |peco)
   if [ -n "$res" ]; then
     git checkout "$res"
   else
