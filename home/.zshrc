@@ -7,8 +7,7 @@ source $HOME/.zsh/zsh-git-prompt/zshrc.sh
 # source $HOME/.zsh/resty/resty
 
 # prompt
-PROMPT="${fg[cyan]}%n${fg[green]} [%m]${reset_color} %~ \$(git-radar --zsh)
-%# "
+eval "$(starship init zsh)"
 
 # completion
 fpath=(/usr/local/share/zsh-completions $fpath)	
