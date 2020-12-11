@@ -2,7 +2,7 @@
 	name = Yuji Ueki
 	email = unhappychoice@gmail.com
 [push]
-	default = simple
+	default = current
 [core]
 	excludesfile = ~/.gitignore
 	editor = nano
@@ -20,3 +20,9 @@
 	template = /Users/yuji/.commit_template
 [tag]
 	gpgsign = true
+[merge]
+	conflictStyle = diff3
+
+[ghq]
+vcs = git
+root = ~/.ghq

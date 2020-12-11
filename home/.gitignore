@@ -225,6 +225,7 @@ hs_err_pid*
 *.rbc
 capybara-*.html
 .rspec
+.rspec_status
 /log
 /tmp
 /db/*.sqlite3
