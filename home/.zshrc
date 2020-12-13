@@ -73,7 +73,7 @@ function pcd() {
 function gcd() {
   local res=$(ghq list | sort | peco)
   if [ -n "$res" ]; then
-    ghq look "$res"
+    ghq get --look "$res"
   else
     return 1
   fi
