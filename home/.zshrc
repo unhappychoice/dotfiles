@@ -4,6 +4,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # source
 source $HOME/.zsh/zsh-git-prompt/zshrc.sh
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 # source $HOME/.zsh/resty/resty
 
 # prompt
@@ -43,6 +44,9 @@ eval "$(rbenv init -)"
 
 # direnv
 eval "$(direnv hook zsh)"
+
+# jabba
+[ -s "/usr/local/opt/jabba/share/jabba/jabba.sh" ] && . "/usr/local/opt/jabba/share/jabba/jabba.sh"
 
 # z
 source ~/.zsh/z/z.sh
