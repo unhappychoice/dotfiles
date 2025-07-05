@@ -11,7 +11,7 @@ source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 eval "$(starship init zsh)"
 
 # completion
-fpath=(/usr/local/share/zsh-completions $fpath)	
+fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -U compinit
 compinit -u
 
@@ -29,9 +29,11 @@ alias gp='git push'
 alias gs='git status'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias gla="git log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
-alias gp="git branch --merged master | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %"
-alias gps="git branch --merged staging | grep -vE '^\*|master$|develop$|staging$' | xargs -I % git branch -d %"
-alias gpd="git branch --merged develop | grep -vE '^\*|master$|develop$|staging$' | xargs -I % git branch -d %"
+alias gp="gpmn && gpms && gps && gps"
+alias gpmn="git branch --merged main | grep -vE '^\*|main$|master$|develop$|staging$' | xargs -I % git branch -d %"
+alias gpms="git branch --merged master | grep -vE '^\*|main$|master$|develop$|staging$' | xargs -I % git branch -d %"
+alias gpd="git branch --merged develop | grep -vE '^\*|main$|master$|develop$|staging$' | xargs -I % git branch -d %"
+alias gps="git branch --merged staging | grep -vE '^\*|main$|master$|develop$|staging$' | xargs -I % git branch -d %"
 
 alias fuck='$(thefuck $(fc -ln -1))'
 
