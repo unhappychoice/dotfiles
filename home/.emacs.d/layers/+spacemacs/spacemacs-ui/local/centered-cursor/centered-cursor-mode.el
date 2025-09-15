@@ -1,1 +1,0 @@
-/Users/yuji/.homesick/repos/dotfiles/home/.emacs.d/layers/+spacemacs/spacemacs-ui/local/centered-cursor/centered-cursor-mode.el

@@ -1,1 +1,0 @@
-/Users/yuji/.homesick/repos/dotfiles/home/.emacs.d/layers/+distributions/spacemacs-base/local/centered-buffer-mode/centered-buffer-mode.el

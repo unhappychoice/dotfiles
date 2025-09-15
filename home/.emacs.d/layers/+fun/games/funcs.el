@@ -1,1 +1,0 @@
-/Users/yuji/.homesick/repos/dotfiles/home/.emacs.d/layers/+fun/games/funcs.el

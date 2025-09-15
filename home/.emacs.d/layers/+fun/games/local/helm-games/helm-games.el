@@ -1,1 +1,0 @@
-/Users/yuji/.homesick/repos/dotfiles/home/.emacs.d/layers/+fun/games/local/helm-games/helm-games.el
