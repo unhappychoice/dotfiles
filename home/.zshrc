@@ -1,10 +1,14 @@
 # path
-export PATH="/usr/local/sbin:$PATH"
+export PATH=/usr/local/sbin:$PATH
+export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
 
 # source
 source $HOME/.zsh/zsh-git-prompt/zshrc.sh
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 # source $HOME/.zsh/resty/resty
 
 # prompt
@@ -40,6 +44,9 @@ alias fuck='$(thefuck $(fc -ln -1))'
 # homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+
+# rustup
+. "$HOME/.cargo/env"
 
 # rbenv
 eval "$(rbenv init -)"
@@ -86,7 +93,13 @@ function gcd() {
 }
 
 function gco() {
-  local res=$(git branch -a | cut -c 3- | sed "/remotes\/origin\/HEAD -> origin\/master/d" | sed "/remotes\/origin\/HEAD -> origin\/staging/d" | sed -e "s/remotes\/origin\///g" | sort | uniq |peco)
+  local res=$(git branch -a \
+| cut -c 3- \
+| sed -e "/remotes\/origin\/HEAD -> origin\//d" \
+| sed -e "s/remotes\/origin\///g" \
+| sort \
+| uniq \
+| peco)
   if [ -n "$res" ]; then
     git checkout "$res"
   else
@@ -106,3 +119,5 @@ function gbr() {
 function pgrep() {
   ack "$@" . | peco --initial-filter CaseSensitive --exec 'awk -F : '"'"'{print "+" $2 " " $1}'"'"' | xargs less '
 }
+
+. "$HOME/.local/bin/env"

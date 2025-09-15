@@ -11,7 +11,7 @@
 	pager = delta
 
 [interactive]
-	difffilter = delta
+	difffilter = delta --color-only
 
 [merge]
 	conflictStyle = zdiff3
