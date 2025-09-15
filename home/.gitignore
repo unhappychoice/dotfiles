@@ -298,4 +298,5 @@ node_modules
 
 **/scripts/tmp
 
-.claude/
+.claude/settings.local.json
+
