@@ -1,28 +1,40 @@
 [user]
 	name = Yuji Ueki
 	email = unhappychoice@gmail.com
+
 [push]
 	default = current
+
 [core]
 	excludesfile = ~/.gitignore
 	editor = nano
+	pager = delta
+
+[interactive]
+	difffilter = delta
+
+[merge]
+	conflictStyle = zdiff3
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	required = true
 	process = git-lfs filter-process
+
 [github]
 	user = unhappychoice
+
 [ghi]
 	token = !security find-internet-password -a unhappychoice -s github.com -l 'ghi token' -w
+
 [commit]
 	gpgsign = true
-	template = /Users/yuji/.commit_template
+	template = ~/.commit_template
+
 [tag]
 	gpgsign = true
-[merge]
-	conflictStyle = diff3
 
 [ghq]
-vcs = git
-root = ~/.ghq
+	vcs = git
+	root = ~/.ghq

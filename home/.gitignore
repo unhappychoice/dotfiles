@@ -18,7 +18,6 @@ com_crashlytics_export_strings.xml
 *.class
 
 # Generated files
-bin/
 gen/
 
 # Gradle files
@@ -298,3 +297,5 @@ node_modules
 .envrc
 
 **/scripts/tmp
+
+.claude/
