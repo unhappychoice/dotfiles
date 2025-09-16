@@ -1,0 +1,10 @@
+[metadata]
+name = "z-dirs"
+description = "Browse z (frecency) tracked directories with file listing preview"
+requirements = ["z"]
+
+[source]
+command = "cat ~/.z | sort -t'|' -k2 -rn | cut -d'|' -f1 | sed \"s|$HOME|~|g\""
+
+[preview]
+command = "eza -a --color=always {}"

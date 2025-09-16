@@ -1,0 +1,10 @@
+[metadata]
+name = "npm-scripts"
+description = "Browse npm scripts from package.json with command preview"
+requirements = ["npm", "jq"]
+
+[source]
+command = "if [ -f package.json ]; then jq -r '.scripts | to_entries | .[] | .key' package.json 2>/dev/null; else echo 'No package.json found'; fi"
+
+[preview]
+command = "if [ -f package.json ]; then jq -r --arg key \"{}\" '.scripts[$key] // \"Script not found\"' package.json 2>/dev/null | bat --language=bash --style=numbers --color=always; else echo 'No package.json found'; fi"

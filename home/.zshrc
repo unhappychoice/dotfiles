@@ -57,9 +57,18 @@ source ~/.zsh/z/z.sh
 # export "$(gpg-agent -s --enable-ssh-support --daemon)"
 export GPG_TTY=$(tty)
 
-# peco functions
+# history settings
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt share_history
+setopt inc_append_history
+
+# television functions
 function pssh() {
-  local host=$(grep -r 'Host ' $HOME/.ssh/* | cut -d' ' -f2 | sort | peco)
+  local host=$(tv -s "grep -r 'Host ' $HOME/.ssh/* | cut -d' ' -f2 | sort")
 
   if [ ! -z "$host" ]; then
     ssh "$host"
@@ -67,47 +76,85 @@ function pssh() {
 }
 
 function pcd() {
-  local res=$(z | sort -rn | cut -c 12- | peco)
+  local res=$(tv z-dirs)
   if [ -n "$res" ]; then
-    cd "$res"
+    # Expand ~ back to $HOME for cd command
+    local expanded_path="${res/#\~/$HOME}"
+    cd "$expanded_path"
   else
     return 1
   fi
 }
 
 function gcd() {
-  local res=$(ghq list | sort | peco)
+  local res=$(tv ghq)
   if [ -n "$res" ]; then
-    ghq get --look "$res"
+    cd "$(ghq root)/$res"
   else
     return 1
   fi
 }
 
 function gco() {
-  local res=$(git branch -a \
-| cut -c 3- \
-| sed -e "/remotes\/origin\/HEAD -> origin\//d" \
-| sed -e "s/remotes\/origin\///g" \
-| sort \
-| uniq \
-| peco)
+  local res=$(tv git-branch)
   if [ -n "$res" ]; then
-    git checkout "$res"
+    # Check if it's a remote branch (starts with origin/)
+    if [[ "$res" == origin/* ]]; then
+      # Extract the local branch name (remove origin/ prefix)
+      local local_branch="${res#origin/}"
+      git checkout "$local_branch"
+    else
+      git checkout "$res"
+    fi
   else
     return 1
   fi
 }
 
 function gbr() {
-  local res=$(ghq list | sort | peco)
+  local res=$(tv ghq)
   if [ -n "$res" ]; then
-    open "https://$res"
+    if [[ -n "$WSL_DISTRO_NAME" || $(uname -r) == *microsoft* ]]; then
+      # WSL environment
+      if command -v wslview >/dev/null 2>&1; then
+        wslview "https://$res"
+      elif command -v explorer.exe >/dev/null 2>&1; then
+        explorer.exe "https://$res"
+      else
+        echo "https://$res"
+      fi
+    else
+      # Native Linux/macOS
+      if command -v open >/dev/null 2>&1; then
+        open "https://$res"
+      elif command -v xdg-open >/dev/null 2>&1; then
+        xdg-open "https://$res"
+      else
+        echo "https://$res"
+      fi
+    fi
   else
     return 1
   fi
 }
 
 function pgrep() {
-  ack "$@" . | peco --initial-filter CaseSensitive --exec 'awk -F : '"'"'{print "+" $2 " " $1}'"'"' | xargs less '
+  local result=$(tv text)
+  if [ -n "$result" ]; then
+    bat --style=numbers --color=always "$result"
+  fi
+}
+
+function nr() {
+  local script=$(tv npm-scripts)
+  if [ -n "$script" ]; then
+    npm run "$script"
+  fi
+}
+
+function hr() {
+  local cmd=$(tv zsh-history)
+  if [ -n "$cmd" ]; then
+    eval "$cmd"
+  fi
 }

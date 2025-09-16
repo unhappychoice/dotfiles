@@ -1,0 +1,10 @@
+[metadata]
+name = "ghq"
+description = "Browse and navigate to ghq-managed repositories with README preview"
+requirements = ["ghq"]
+
+[source]
+command = "ghq list | sort"
+
+[preview]
+command = "find $(ghq root)/{} -name 'README.md' -o -name 'readme.md' -o -name 'Readme.md' | head -1 | xargs bat --style=numbers --color=always 2>/dev/null || echo 'No README found'"
