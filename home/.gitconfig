@@ -38,3 +38,5 @@
 [ghq]
 	vcs = git
 	root = ~/.ghq
+[init]
+	defaultBranch = main
