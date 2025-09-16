@@ -1,0 +1,25 @@
+[tools]
+go = "latest"
+
+java = "latest"
+
+node = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
+"npm:@google/gemini-cli" = "latest"
+"npm:codex" = "latest"
+"npm:difit" = "latest"
+"npm:mdts" = "latest"
+"npm:node-gyp" = "latest"
+"npm:oh-my-logo" = "latest"
+
+python = "latest"
+
+ruby = "latest"
+"gem:bitflyer-cli" = "latest"
+"gem:circleci-cli" = "latest"
+"gem:irasutoya-cli" = "latest"
+
+rust = "stable"
+
+[settings]
+experimental = true

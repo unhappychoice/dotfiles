@@ -2,7 +2,6 @@
 export PATH=/usr/local/sbin:$PATH
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 
@@ -11,8 +10,13 @@ source $HOME/.zsh/zsh-git-prompt/zshrc.sh
 # source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 # source $HOME/.zsh/resty/resty
 
-# prompt
+# initialize
+. "$HOME/.local/bin/env"
+. "$HOME/.cargo/env"
+
 eval "$(starship init zsh)"
+eval "$(mise activate zsh)"
+eval "$(direnv hook zsh)"
 
 # completion
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -45,24 +49,12 @@ alias fuck='$(thefuck $(fc -ln -1))'
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
-# rustup
-. "$HOME/.cargo/env"
-
-# rbenv
-eval "$(rbenv init -)"
-
-# direnv
-eval "$(direnv hook zsh)"
-
-# jabba
-[ -s "/usr/local/opt/jabba/share/jabba/jabba.sh" ] && . "/usr/local/opt/jabba/share/jabba/jabba.sh"
-
 # z
 source ~/.zsh/z/z.sh
 
 # gpg-agent
-gpgconf --kill gpg-agent
-export "$(gpg-agent -s --enable-ssh-support --daemon)"
+# gpgconf --kill gpg-agent
+# export "$(gpg-agent -s --enable-ssh-support --daemon)"
 export GPG_TTY=$(tty)
 
 # peco functions
@@ -119,5 +111,3 @@ function gbr() {
 function pgrep() {
   ack "$@" . | peco --initial-filter CaseSensitive --exec 'awk -F : '"'"'{print "+" $2 " " $1}'"'"' | xargs less '
 }
-
-. "$HOME/.local/bin/env"
