@@ -18,10 +18,7 @@ eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
 eval "$(direnv hook zsh)"
 
-# >>> splashboard >>>
-# Added by `splashboard install`. Safe to remove.
 eval "$(splashboard init zsh)"
-# <<< splashboard <<<
 
 # completion
 fpath=(/usr/local/share/zsh-completions $fpath)
