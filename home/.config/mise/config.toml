@@ -1,4 +1,6 @@
 [tools]
+gcloud = "latest"
+
 go = "latest"
 
 java = "latest"
@@ -12,7 +14,7 @@ node = "latest"
 "npm:node-gyp" = "latest"
 "npm:oh-my-logo" = "latest"
 
-python = "latest"
+python = "3.13"
 
 ruby = "latest"
 "gem:bitflyer-cli" = "latest"
@@ -20,6 +22,9 @@ ruby = "latest"
 "gem:irasutoya-cli" = "latest"
 
 rust = "stable"
+"ubi:sst/opencode"= { version = "1.4.3", matching = "linux-x64.tar.gz", exe = "opencode" }
+"npm:openclaw" = "latest"
 
 [settings]
 experimental = true
+idiomatic_version_file_enable_tools = ["ruby"]

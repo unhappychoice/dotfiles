@@ -17,6 +17,7 @@ source $HOME/.zsh/zsh-git-prompt/zshrc.sh
 eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
 eval "$(direnv hook zsh)"
+eval "$(splashboard init zsh)"
 
 # completion
 fpath=(/usr/local/share/zsh-completions $fpath)

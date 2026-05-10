@@ -38,5 +38,10 @@
 [ghq]
 	vcs = git
 	root = ~/.ghq
+
 [init]
 	defaultBranch = main
+
+[delta]
+	hunk-header-style = omit
+	line-numbers = true
