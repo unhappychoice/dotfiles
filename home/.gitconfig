@@ -38,14 +38,18 @@
 [ghq]
 	vcs = git
 	root = ~/.ghq
+
 [init]
 	defaultBranch = main
+
 [delta]
-	hunk-header-style="omit"
-	line-numbers=true
+	hunk-header-style = omit
+	line-numbers = true
+
 [credential "https://github.com"]
-	helper = 
-	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
+	helper =
+	helper = !gh auth git-credential
+
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
+	helper =
+	helper = !gh auth git-credential
