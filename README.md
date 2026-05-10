@@ -22,6 +22,12 @@ After linking, install the OS-specific `gpg-agent.conf` (auto-detects WSL / macO
 ~/.homesick/repos/dotfiles/bin/setup-gpg-agent.sh
 ```
 
+Pull the latest television default channels (only the custom `ghq` / `z-dirs` channels are tracked here; everything else is fetched fresh):
+
+```sh
+tv update-channels
+```
+
 ## What's inside
 
 - **Shell**: zsh + [starship](https://starship.rs/) prompt, splashboard on launch
