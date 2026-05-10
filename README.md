@@ -1,5 +1,7 @@
 # dotfiles
 
+<p align="center"><img src="assets/og.png" alt="dotfiles" width="800"></p>
+
 my awesome dotfiles :heart:
 
 ## Install
