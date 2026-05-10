@@ -1,8 +1,11 @@
-# dotfiles
+<p align="center">
+  <img src="assets/og.png" alt="dotfiles" width="820">
+</p>
 
-<p align="center"><img src="assets/og.png" alt="dotfiles" width="800"></p>
-
-my awesome dotfiles :heart:
+<p align="center">
+  <strong>my awesome dotfiles ♥</strong><br>
+  <sub>personal zsh + mise setup, managed with homeshick.</sub>
+</p>
 
 ## Install
 
