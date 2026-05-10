@@ -5,11 +5,6 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 
-# source
-source $HOME/.zsh/zsh-git-prompt/zshrc.sh
-# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-# source $HOME/.zsh/resty/resty
-
 # initialize
 . "$HOME/.local/bin/env"
 . "$HOME/.cargo/env"
@@ -50,12 +45,7 @@ alias fuck='$(thefuck $(fc -ln -1))'
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
-# z
-source ~/.zsh/z/z.sh
-
 # gpg-agent
-# gpgconf --kill gpg-agent
-# export "$(gpg-agent -s --enable-ssh-support --daemon)"
 export GPG_TTY=$(tty)
 
 # history settings
