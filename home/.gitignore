@@ -300,3 +300,6 @@ node_modules
 
 .claude/settings.local.json
 
+### Playwright ###
+.playwright-mcp/
+
