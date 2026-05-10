@@ -158,3 +158,16 @@ function hr() {
     eval "$cmd"
   fi
 }
+
+# >>> splashboard >>>
+# Added by `splashboard install`. Safe to remove.
+eval "$(splashboard init zsh)"
+# <<< splashboard <<<
+
+# pnpm
+export PNPM_HOME="/home/owner/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
