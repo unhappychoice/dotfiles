@@ -1,0 +1,113 @@
+# home_github — "my github" preset. Avatar on the left, a 4-line profile (handle / name /
+# bio / location · member since YYYY) on the right, then three stacked sections:
+# contributions heatmap, attention lane (open PRs / review queue), and recent notifications.
+# All body rows sit inside the 70-col content band used by the other 0.x presets.
+#
+# Requires `gh auth login` (or `GH_TOKEN` / `GITHUB_TOKEN`) — the login is inferred from the
+# authenticated token so no `GITHUB_USER` setup is needed. Explicit `options.user = "<login>"`
+# on each `github_*` widget still wins if you want to point the preset at someone else.
+
+# ── Widgets ────────────────────────────────────────────────────────
+
+[[widget]]
+id = "avatar"
+fetcher = "github_avatar"
+render = { type = "media_image", fit = "contain", max_width = 14, max_height = 7, align = "center" }
+
+# Profile: `github_user` with TextBlock shape — up to 4 lines (handle / name / bio /
+# location · member since YYYY). Missing fields collapse so users with no bio don't see a
+# stranded blank line. The `@login` header line doubles as the handle so no separate
+# widget is needed.
+[[widget]]
+id = "profile"
+fetcher = "github_user"
+render = { type = "list_plain", align = "left" }
+
+[[widget]]
+id = "contributions"
+fetcher = "github_contributions"
+render = { type = "grid_heatmap", align = "center" }
+
+[[widget]]
+id = "my_prs"
+fetcher = "github_my_prs"
+render = { type = "list_links", max_items = 4 }
+
+[[widget]]
+id = "review_queue"
+fetcher = "github_review_requests"
+render = { type = "list_links", max_items = 4 }
+
+[[widget]]
+id = "notifications"
+fetcher = "github_notifications"
+render = { type = "list_links", max_items = 5 }
+
+# ── Layout ─────────────────────────────────────────────────────────
+
+[[row]]
+height = { length = 1 }
+
+# Header band: avatar (fixed 16 cells tall-and-wide enough to read) + the 4-line profile
+# block next to it. Row height is 7 so the square avatar actually has room to render at a
+# useful size; the 4 profile lines sit vertically within the same band.
+[[row]]
+height = { length = 7 }
+flex = "center"
+  [[row.child]]
+  widget = "avatar"
+  width = { length = 16 }
+  [[row.child]]
+  widget = "profile"
+  width = { length = 54 }
+
+[[row]]
+height = { length = 1 }
+
+# Contributions heatmap: fits inside the 70-col band (≈ 35 weeks of data at 2 cells
+# per day). Users who want the full 52-week year widen this row to `{ length = 108 }`.
+[[row]]
+height = { length = 9 }
+flex = "center"
+  [[row.child]]
+  widget = "contributions"
+  width = { length = 70 }
+  border = "top"
+  title = "  contributions · last ~8 months  "
+  title_align = "center"
+
+[[row]]
+height = { length = 1 }
+
+[[row]]
+height = { length = 5 }
+flex = "center"
+gap = 2
+  [[row.child]]
+  widget = "my_prs"
+  width = { length = 34 }
+  border = "top"
+  title = "  my PRs  "
+  title_align = "center"
+  [[row.child]]
+  widget = "review_queue"
+  width = { length = 34 }
+  border = "top"
+  title = "  review queue  "
+  title_align = "center"
+
+[[row]]
+height = { length = 1 }
+
+[[row]]
+height = { length = 7 }
+flex = "center"
+  [[row.child]]
+  widget = "notifications"
+  width = { length = 70 }
+  border = "top"
+  title = "  notifications  "
+  title_align = "center"
+
+[[row]]
+height = { length = 1 }

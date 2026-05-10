@@ -1,0 +1,2 @@
+# Written by `splashboard install` — keeps tokens out of dotfiles repos.
+secrets.toml
