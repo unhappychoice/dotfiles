@@ -39,8 +39,6 @@ alias gpms="git branch --merged master | grep -vE '^\*|main$|master$|develop$|st
 alias gpd="git branch --merged develop | grep -vE '^\*|main$|master$|develop$|staging$' | xargs -I % git branch -d %"
 alias gps="git branch --merged staging | grep -vE '^\*|main$|master$|develop$|staging$' | xargs -I % git branch -d %"
 
-alias fuck='$(thefuck $(fc -ln -1))'
-
 # homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
