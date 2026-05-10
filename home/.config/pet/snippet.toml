@@ -1,0 +1,12 @@
+
+[[Snippets]]
+  Description = "Check Sendai weather (Zundamon's hometown!)"
+  Output = ""
+  Tag = []
+  command = "curl 'wttr.in/Sendai?lang=ja&format=3'"
+
+[[Snippets]]
+  Description = "Show Git log with graph"
+  Output = ""
+  Tag = []
+  command = "git log --oneline --graph --decorate --all -n <num>"

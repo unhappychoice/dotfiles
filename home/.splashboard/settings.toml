@@ -1,0 +1,4 @@
+# Written by `splashboard install`. User preferences that apply to every dashboard.
+# Safe to edit by hand. Re-running `splashboard install` leaves this file alone
+# unless you pass `--yes`, which backs it up as `settings.toml.bak` before rewriting.
+
