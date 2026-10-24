@@ -13,6 +13,7 @@ eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
 eval "$(direnv hook zsh)"
 eval "$(splashboard init zsh)"
+eval "$(zoxide init zsh)"
 
 # completion
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -65,7 +66,7 @@ function pssh() {
 }
 
 function pcd() {
-  local res=$(tv z-dirs)
+  local res=$(tv zoxide)
   if [ -n "$res" ]; then
     # Expand ~ back to $HOME for cd command
     local expanded_path="${res/#\~/$HOME}"
