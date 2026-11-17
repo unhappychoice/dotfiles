@@ -1,6 +1,5 @@
 # path
 export PATH=/usr/local/sbin:$PATH
-export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
@@ -149,5 +148,7 @@ function hr() {
   fi
 }
 
-# OpenClaw Completion
-[ -f "/home/owner/.openclaw/completions/openclaw.zsh" ] && source "/home/owner/.openclaw/completions/openclaw.zsh"
+# os specific
+os_zshrc="$HOME/.zshrc.${(L)$(uname -s)}"
+[ -f "$os_zshrc" ] && source "$os_zshrc"
+unset os_zshrc

@@ -6,7 +6,6 @@ go = "latest"
 java = "latest"
 
 node = "latest"
-"npm:@anthropic-ai/claude-code" = "latest"
 "npm:@google/gemini-cli" = "latest"
 "npm:@openai/codex" = "latest"
 "npm:difit" = "latest"
@@ -22,12 +21,12 @@ ruby = "latest"
 "gem:irasutoya-cli" = "latest"
 
 rust = "stable"
-"ubi:sst/opencode"= { version = "1.18.30", matching = "linux-x64.tar.gz", exe = "opencode" }
+"ubi:sst/opencode" = { version = "1.18.30", matching = "linux-x64.tar.gz", exe = "opencode", os = ["linux"] }
 "npm:openclaw" = "2026.7.1-beta.5"
 
 [settings]
 experimental = true
-idiomatic_version_file_enable_tools = ["ruby"]
+idiomatic_version_file_enable_tools = ["ruby", "node"]
 
 [settings.python]
 precompiled_flavor = "install_only"

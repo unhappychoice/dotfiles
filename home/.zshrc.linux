@@ -1,0 +1,5 @@
+# linuxbrew
+export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+
+# OpenClaw Completion
+[ -f "$HOME/.openclaw/completions/openclaw.zsh" ] && source "$HOME/.openclaw/completions/openclaw.zsh"
