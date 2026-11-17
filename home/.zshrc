@@ -148,3 +148,6 @@ function hr() {
     eval "$cmd"
   fi
 }
+
+# OpenClaw Completion
+[ -f "/home/owner/.openclaw/completions/openclaw.zsh" ] && source "/home/owner/.openclaw/completions/openclaw.zsh"
