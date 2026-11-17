@@ -1,2 +1,6 @@
 .cache/
 home/.gnupg/gpg-agent.conf
+home/.gnupg/openpgp-revocs.d/
+home/.gnupg/private-keys-v1.d/
+home/.gnupg/pubring.kbx
+home/.gnupg/trustdb.gpg
